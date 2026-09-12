@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiếng Anh Lớp 3 - Global Success</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4e73df;
+            --secondary: #1cc88a;
+            --accent: #f6c23e;
+            --danger: #e74a3b;
+            --dark: #2c3e50;
+            --light: #f8f9fc;
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(0,0,0,0.08);
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            background-color: #f0f3ff;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        #home-screen {
+            display: block;
+        }
+
+        .welcome-banner {
+            background: var(--white);
+            padding: 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .welcome-banner h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .unit-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 25px 20px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-bottom: 5px solid var(--primary);
+        }
+
+        .unit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            background: #fdfeff;
+        }
+
+        .unit-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .unit-card p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        #unit-screen {
+            display: none;
+        }
+
+        .back-btn {
+            background: var(--dark);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+
+        .back-btn:hover {
+            background: #1a252f;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e3e6f0;
+        }
+
+        .vocab-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .vocab-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .vocab-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .vocab-word {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--dark);
+        }
+
+        .audio-btn {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 2px 5px rgba(78, 115, 223, 0.4);
+        }
+
+        .audio-btn:hover {
+            transform: scale(1.1);
+            background: #224abe;
+        }
+
+        .vocab-ipa {
+            color: #e74a3b;
+            font-style: italic;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .vocab-meaning {
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .vocab-example {
+            font-size: 0.9rem;
+            background: #f8f9fc;
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+            margin-top: 8px;
+        }
+
+        .example-en {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 3px;
+        }
+
+        .example-vi {
+            color: #666;
+            font-style: italic;
+            font-size: 0.85rem;
+        }
+
+        .grammar-box {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            border-left: 6px solid var(--secondary);
+        }
+
+        .grammar-box h4 {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .grammar-content p {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            display: block;
+        }
+
+        .grammar-example {
+            background: #f4f6fc;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .test-box {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+
+        .test-box h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .question-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e3e6f0;
+        }
+
+        .question-item p {
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .question-item input[type="text"] {
+            padding: 8px 12px;
+            border: 2px solid #d1d3e2;
+            border-radius: 8px;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 300px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f8f9fc;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 2px solid #e3e6f0;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+        }
+
+        .option-label:hover {
+            background: #eef2ff;
+            border-color: var(--primary);
+        }
+
+        .option-label input[type="radio"] {
+            accent-color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .explanation-box {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: #fdfefe;
+            border-left: 4px solid var(--primary);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+            color: #333;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .submit-test-btn {
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(28, 200, 138, 0.4);
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+
+        .submit-test-btn:hover {
+            background: #17a673;
+        }
+
+        .test-result {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        /* --- PHẦN CHÂN TRANG (FOOTER) MỚI, SANG TRỌNG VÀ CHUYÊN NGHIỆP --- */
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+            color: var(--white);
+            margin-top: 50px;
+            padding: 40px 20px 25px 20px;
+            border-top: 4px solid var(--primary);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 15px;
+        }
+
+        .footer-tagline {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+            margin: 5px 0;
+        }
+
+        .footer-copyright {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            font-weight: 400;
+        }
+
+        .footer-copyright strong {
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.4rem; }
+            .units-grid { grid-template-columns: 1fr; }
+            .footer-tagline { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🌟 Tiếng Anh Lớp 3 - Global Success 🌟</h1>
+        <p>Hệ thống học tiếng Anh trực tuyến, tổng hợp kiến thức</p>
+    </header>
+
+    <div class="container">
+        <div id="home-screen">
+            <div class="welcome-banner">
+                <h2>Danh sách bài học theo từng Unit</h2>
+                <p>Nhấn vào từng Unit để xem từ vựng chuẩn, nghe phát âm và làm bài tập kiểm tra thú vị.</p>
+            </div>
+            <div class="units-grid" id="units-container"></div>
+        </div>
+
+        <div id="unit-screen">
+            <button class="back-btn" onclick="goHome()">⬅ Quay lại danh sách Unit</button>
+            <div id="unit-content-area"></div>
+        </div>
+    </div>
+
+    <!-- CHÂN TRANG (FOOTER) THIẾT KẾ SANG TRỌNG -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-tagline">
+                ✨ Học tiếng Anh theo từng Unit ✨
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-copyright">
+                Bản quyền &copy; 2026 thuộc về <strong>Nguyễn Văn Đủ</strong>. Tất cả các quyền được bảo lưu.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const courseData = {
+            1: {
+                title: "Unit 1: Hello",
+                vocabulary: [
+                    { word: "Hello", ipa: "/həˈləʊ/", meaning: "Xin chào", example: { en: "Hello, Tony! I'm Nam.", vi: "Xin chào, Tony! Tớ là Nam." } },
+                    { word: "Hi", ipa: "/haɪ/", meaning: "Chào", example: { en: "Hi, Mary! Nice to meet you.", vi: "Chào, Mary! Rất vui được gặp bạn." } },
+                    { word: "How", ipa: "/haʊ/", meaning: "Như thế nào", example: { en: "How is he? - He's fine.", vi: "Cậu ấy thế nào? - Cậu ấy khỏe." } },
+                    { word: "Fine", ipa: "/faɪn/", meaning: "Khỏe, tốt", example: { en: "She's fine, thanks.", vi: "Cô ấy khỏe, cảm ơn nhé." } },
+                    { word: "Goodbye", ipa: "/ɡʊdˈbaɪ/", meaning: "Tạm biệt", example: { en: "Goodbye, Ben.", vi: "Tạm biệt, Ben." } },
+                    { word: "Bye", ipa: "/baɪ/", meaning: "Tạm biệt", example: { en: "Bye, Lucy.", vi: "Tạm biệt, Lucy." } },
+                    { word: "Thank you", ipa: "/ˈθæŋk juː/", meaning: "Cảm ơn", example: { en: "Thank you very much.", vi: "Cảm ơn bạn rất nhiều." } },
+                    { word: "Name", ipa: "/neɪm/", meaning: "Tên", example: { en: "My name is Linh.", vi: "Tên của tớ là Linh." } }
+                ],
+                grammar: [
+                    { title: "1. Chào hỏi", desc: "<b>Hello:</b> Dùng mọi tình huống.<br><b>Hi:</b> Dùng thân mật.", example: "Hello, Bill. / Hi, Lucy." },
+                    { title: "2. Giới thiệu tên", desc: "<b>I am / I'm + [Tên]</b>", example: "I am Tien." },
+                    { title: "3. Sức khỏe", desc: "<b>How are you? - I'm fine, thank you.</b>", example: "How are you? - I'm fine." },
+                    { title: "Ghi nhớ", desc: "<b>Thank you = Thanks = Cảm ơn!" }
+                ],
+                fillTest: [
+                    { q: "Điền từ thích hợp: H_llo, Tony!", answer: "e", explain: "Từ đúng là 'Hello' (Xin chào), chữ cái còn thiếu là 'e'." },
+                    { q: "Điền từ hoàn thành mẫu câu: My n___e is Linh.", answer: "am", explain: "Cấu trúc giới thiệu tên là 'My name is...' nên chỗ trống điền 'am' để hoàn thành từ 'name'." },
+                    { q: "Điền từ vào chỗ trống: I'm fine, th___k you.", answer: "an", explain: "Cụm từ cảm ơn là 'thank you', thiếu hai chữ cái 'an'." }
+                ],
+                mcqTest: [
+                    { q: "Chọn câu chào tương đương với 'Hello' nhưng thân mật hơn:", options: ["Hi", "Goodbye", "Fine", "Thanks"], answer: 0, explain: "Đáp án đúng là 'Hi'. Cả 'Hi' và 'Hello' đều dùng để chào, nhưng 'Hi' thân mật hơn." },
+                    { q: "Hỏi thăm sức khỏe tiếng Anh dùng câu nào?", options: ["What is your name?", "How are you?", "How old are you?", "What this?"], answer: 1, explain: "Đáp án đúng là 'How are you?' (Bạn có khỏe không?)." },
+                    { q: "Chọn từ có nghĩa là 'Tạm biệt':", options: ["Hello", "Fine", "Goodbye", "Name"], answer: 2, explain: "Đáp án đúng là 'Goodbye' (Tạm biệt)." }
+                ]
+            },
+            2: {
+                title: "Unit 2: Our Names",
+                vocabulary: [
+                    { word: "Name", ipa: "/neɪm/", meaning: "Tên", example: { en: "My name is Ben.", vi: "Tên tôi là Ben." } },
+                    { word: "What", ipa: "/wɒt/", meaning: "Cái gì", example: { en: "What is this?", vi: "Đây là cái gì?" } },
+                    { word: "How old", ipa: "/haʊ əʊld/", meaning: "Bao nhiêu tuổi", example: { en: "How old is she?", vi: "Cô ấy bao nhiêu tuổi?" } },
+                    { word: "Eight", ipa: "/eɪt/", meaning: "Số 8", example: { en: "I am eight.", vi: "Tôi 8 tuổi." } },
+                    { word: "Nine", ipa: "/naɪn/", meaning: "Số 9", example: { en: "Nine years old.", vi: "Chín tuổi." } },
+                    { word: "Ten", ipa: "/ten/", meaning: "Số 10", example: { en: "Ten years old.", vi: "Mười tuổi." } },
+                    { word: "Pen", ipa: "/pen/", meaning: "Bút mực", example: { en: "This is a pen.", vi: "Đây là một cây bút mực." } },
+                    { word: "Pencil", ipa: "/ˈpen.səl/", meaning: "Bút chì", example: { en: "A sharp pencil.", vi: "Một cây bút chì nhọn." } }
+                ],
+                grammar: [
+                    { title: "1. Hỏi tên", desc: "<b>What's your name?</b><br>→ <b>My name's + [Tên]</b>", example: "What's your name? - My name's Nam." },
+                    { title: "2. Hỏi tuổi", desc: "<b>How old are you?</b><br>→ <b>I'm + [Số tuổi].</b>", example: "How old are you? - I'm eight." }
+                ],
+                fillTest: [
+                    { q: "What's ____ name? - My name's Tien.", answer: "your", explain: "Hỏi tên của bạn dùng tính từ sở hữu 'your'." },
+                    { q: "How o__ are you? - I'm eight.", answer: "ld", explain: "Cụm từ hỏi tuổi là 'how old', thiếu chữ 'ld'." },
+                    { q: "My brother is ei__t years old. (Số 8)", answer: "gh", explain: "Số 8 tiếng Anh viết là 'eight', thiếu 'gh'." }
+                ],
+                mcqTest: [
+                    { q: "Muốn hỏi tên bạn, ta dùng:", options: ["How are you?", "What's your name?", "How old are you?", "Where are you?"], answer: 1, explain: "Đáp án đúng là 'What's your name?' (Tên bạn là gì?)." },
+                    { q: "Số 'Nine' viết bằng số là mấy?", options: ["8", "9", "10", "7"], answer: 1, explain: "'Nine' trong tiếng Anh có nghĩa là số 9." },
+                    { q: "'Pencil' có nghĩa tiếng Việt là gì?", options: ["Bút mực", "Cục tẩy", "Bút chì", "Thước kẻ"], answer: 2, explain: "'Pencil' là bút chì, còn 'pen' mới là bút mực." }
+                ]
+            },
+            3: {
+                title: "Unit 3: Our Friends",
+                vocabulary: [
+                    { word: "Mr.", ipa: "/ˈmɪstə(r)/", meaning: "Ông", example: { en: "This is Mr. Long.", vi: "Đây là thầy/ông Long." } },
+                    { word: "Ms.", ipa: "/mɪz/", meaning: "Bà, cô", example: { en: "Ms. Hien is our teacher.", vi: "Cô Hiền là giáo viên của chúng tôi." } },
+                    { word: "This", ipa: "/ðɪs/", meaning: "Đây", example: { en: "This is a pen.", vi: "Đây là một cây bút." } },
+                    { word: "That", ipa: "/ðæt/", meaning: "Kia", example: { en: "That is my friend.", vi: "Kia là bạn của tớ." } },
+                    { word: "Friend", ipa: "/frend/", meaning: "Bạn bè", example: { en: "He is my best friend.", vi: "Cậu ấy là bạn thân nhất của tớ." } },
+                    { word: "Teacher", ipa: "/ˈtiːtʃə(r)/", meaning: "Giáo viên", example: { en: "She is a kind teacher.", vi: "Cô ấy là một giáo viên tốt bụng." } }
+                ],
+                grammar: [
+                    { title: "1. Giới thiệu người", desc: "• <b>This is...</b> (Ở gần)<br>• <b>That is...</b> (Ở xa)", example: "This is Lucy. / That's Ms. Ha." },
+                    { title: "2. Xác nhận đúng/sai", desc: "<b>Is this/that...?</b><br>→ <b>Yes, it is. / No, it isn't.</b>", example: "Is this Ben? - Yes, it is." },
+                    { title: "Ghi nhớ", desc: "Nếu đúng → Yes, it is.<br>Nếu sai → No, it isn't." }
+                ],
+                fillTest: [
+                    { q: "This i_ my friend.", answer: "s", explain: "Động từ 'to be' đi với 'This' là 'is', thiếu chữ 's'." },
+                    { q: "Is this Ben? - Yes, i_ is.", answer: "t", explain: "Đại từ chỉ vật/người ở đây dùng 'it', thiếu chữ 't'." },
+                    { q: "Is that Minh? - No, it i__n't.", answer: "si", explain: "Dạng phủ định của 'is' là 'isn't', thiếu 'si'." }
+                ],
+                mcqTest: [
+                    { q: "Từ nào chỉ giáo viên nam?", options: ["Ms.", "Mr.", "Teacher", "Friend"], answer: 1, explain: "'Mr.' dùng cho nam (Thầy/Ông), 'Ms.' dùng cho nữ." },
+                    { q: "Chọn cấu trúc giới thiệu người ở gần:", options: ["That is...", "This is...", "It is a...", "What is..."], answer: 1, explain: "'This is' dùng để giới thiệu người/vật ở gần." },
+                    { q: "Đáp án cho câu hỏi 'Is this Ben?' khi đúng là:", options: ["No, it isn't.", "Yes, it is.", "Yes, I am.", "No, I'm not."], answer: 1, explain: "Cấu trúc hỏi 'Is this...?' trả lời khẳng định là 'Yes, it is'." }
+                ]
+            },
+            4: {
+                title: "Unit 4: Our Bodies",
+                vocabulary: [
+                    { word: "ear", ipa: "/ɪə(r)/", meaning: "tai", example: { en: "I have two ears.", vi: "Tôi có hai cái tai." } },
+                    { word: "eye", ipa: "/aɪ/", meaning: "mắt", example: { en: "Open your eyes.", vi: "Hãy mở mắt ra." } },
+                    { word: "face", ipa: "/feɪs/", meaning: "mặt", example: { en: "Wash your face.", vi: "Hãy rửa mặt đi." } },
+                    { word: "hair", ipa: "/heə(r)/", meaning: "tóc", example: { en: "She has long hair.", vi: "Cô ấy có mái tóc dài." } },
+                    { word: "nose", ipa: "/nəʊz/", meaning: "mũi", example: { en: "Touch your nose.", vi: "Chạm vào mũi của bạn." } },
+                    { word: "mouth", ipa: "/maʊθ/", meaning: "miệng", example: { en: "Open your mouth.", vi: "Mở miệng ra." } },
+                    { word: "touch", ipa: "/tʌtʃ/", meaning: "chạm vào", example: { en: "Touch your mouth.", vi: "Chạm vào miệng của bạn."} },
+                    { word: "open", ipa: "/ˈoʊ.pən/", meaning: "mở / mở ra", example: { en: "Open your book.", vi: "Mở sách của bạn."} },
+                    { word: "part", ipa: "/pɑːrt/", meaning: "phần, bộ phận", example: { en: "Parts of the body.", vi: "Các bộ phận trên cơ thể." }}
+                ],
+                grammar: [
+                    { title: "1. Hỏi bộ phận", desc: "<b>What's this/that?</b><br>→ <b>It's a/an [bộ phận].</b>", example: "What's this? - It's an ear." },
+                    { title: "2. Mệnh lệnh", desc: "<b>Touch your [bộ phận]!</b>", example: "Touch your face!" },
+                    { title: "3. Mệnh lệnh", desc: "<b>Open your [bộ phận]!</b>", example: "Open your mouth!" }
+                ],
+                fillTest: [
+                    { q: "What's this? - It's a_ ear.", answer: "n", explain: "Vì 'ear' bắt đầu bằng nguyên âm 'e' nên phải dùng mạo từ 'an'." },
+                    { q: "T_uch your nose!", answer: "o", explain: "Động từ 'touch' (chạm) thiếu chữ cái 'o'." },
+                    { q: "Op_n your book!", answer: "e", explain: "Động từ 'open' (mở) thiếu chữ cái 'e'." }
+                ],
+                mcqTest: [
+                    { q: "'Eye' có nghĩa là gì?", options: ["Tai", "Mắt", "Mũi", "Miệng"], answer: 1, explain: "'Eye' là mắt, 'ear' là tai." },
+                    { q: "Chọn mệnh lệnh đúng để bảo bạn chạm vào mũi:", options: ["Touch your nose!", "Open your mouth!", "Close your book!", "Stand up!"], answer: 0, explain: "'Touch your nose' có nghĩa là chạm vào mũi." },
+                    { q: "Từ nào chỉ bộ phận 'tóc'?", options: ["hand", "face", "hair", "ear"], answer: 2, explain: "'Hair' là tóc." }
+                ]
+            },
+            5: {
+                title: "Unit 5: My Hobbies",
+                vocabulary: [
+                    { word: "hobby", ipa: "/ˈhɒbi/", meaning: "sở thích", example: { en: "What is your hobby?", vi: "Sở thích của bạn là gì?" } },
+                    { word: "singing", ipa: "/ˈsɪŋɪŋ/", meaning: "hát", example: { en: "I like singing.", vi: "Tôi thích hát." } },
+                    { word: "dancing", ipa: "/ˈdɑːnsɪŋ/", meaning: "khiêu vũ", example: { en: "She loves dancing.", vi: "Cô ấy rất thích nhảy múa." } },
+                    { word: "cooking", ipa: "/ˈkʊkɪŋ/", meaning: "nấu ăn", example: { en: "Cooking is fun.", vi: "Nấu ăn rất vui." } },
+                    { word: "drawing", ipa: "/ˈdrɔːɪŋ/", meaning: "vẽ", example: { en: "He is drawing a picture.", vi: "Cậu ấy đang vẽ một bức tranh." } },
+                    { word: "swimming", ipa: "/ˈswɪmɪŋ/", meaning: "bơi lội", example: { en: "We like swimming.", vi: "Chúng tôi thích bơi lội." } }
+                ],
+                grammar: [
+                    { title: "1. Hỏi sở thích", desc: "<b>What's your hobby?</b><br>→ <b>It's + [hobby]. / I like + [V-ing].</b>", example: "What's your hobby? - It's dancing." }
+                ],
+                fillTest: [
+                    { q: "What's your h_bby?", answer: "o", explain: "Từ 'hobby' (sở thích) thiếu chữ cái 'o'." },
+                    { q: "I l___ swimming.", answer: "ike", explain: "Động từ 'like' (thích) thiếu ba chữ cái 'ike'." },
+                    { q: "Mai's hobby is c_oking.", answer: "o", explain: "Từ 'cooking' (nấu ăn) thiếu chữ cái 'o'." }
+                ],
+                mcqTest: [
+                    { q: "'Cooking' nghĩa là gì?", options: ["Nấu ăn", "Hát", "Nhảy múa", "Bơi lội"], answer: 0, explain: "'Cooking' là nấu ăn." },
+                    { q: "Hỏi sở thích của bạn dùng câu nào?", options: ["What's your name?", "What's your hobby?", "How old are you?", "Is this your book?"], answer: 1, explain: "'What's your hobby?' dùng để hỏi về sở thích." },
+                    { q: "Hoạt động 'drawing' là làm gì?", options: ["Vẽ tranh", "Chạy", "Đi bộ", "Tô màu"], answer: 0, explain: "'Drawing' là vẽ tranh." }
+                ]
+            },
+            6: {
+                title: "Unit 6: Our School",
+                vocabulary: [
+                    { word: "school", ipa: "/skuːl/", meaning: "trường học", example: { en: "This is my school.", vi: "Đây là trường của tôi." } },
+                    { word: "classroom", ipa: "/ˈklɑːsruːm/", meaning: "phòng học", example: { en: "Our classroom is big.", vi: "Phòng học của chúng tôi rất lớn." } },
+                    { word: "playground", ipa: "/ˈpleɪɡraʊnd/", meaning: "sân chơi", example: { en: "Let's go to the playground.", vi: "Hãy ra sân chơi nào." } },
+                    { word: "library", ipa: "/ˈlaɪbrəri/", meaning: "thư viện", example: { en: "We read books in the library.", vi: "Chúng tôi đọc sách ở thư viện." } },
+                    { word: "computer room", ipa: "/kəmˈpjuːtəruːm/", meaning: "phòng máy tính", example: { en: "This is the computer room.", vi: "Đây là phòng máy tính." } }
+                ],
+                grammar: [
+                    { title: "1. Hỏi địa điểm", desc: "<b>Is this + [location]?</b><br>→ <b>Yes, it is. / No, it isn't.</b>", example: "Is this our gym? - Yes, it is." },
+                    { title: "2. Rủ rê", desc: "<b>Let's + V + ...!</b>", example: "Let's go to the music room!" }
+                ],
+                fillTest: [
+                    { q: "Is this our gym? - Yes, i_ is.", answer: "t", explain: "Đại từ thay thế là 'it', thiếu chữ 't'." },
+                    { q: "L_t's go to the music room!", answer: "e", explain: "Cấu trúc rủ rê 'Let's' thiếu chữ 'e'." },
+                    { q: "We read books in the lib_ary.", answer: "r", explain: "Từ 'library' (thư viện) thiếu chữ 'r'." }
+                ],
+                mcqTest: [
+                    { q: "'Library' là phòng gì?", options: ["Phòng máy tính", "Thư viện", "Sân chơi", "Phòng thể dục"], answer: 1, explain: "'Library' là nơi đọc sách, tức là thư viện." },
+                    { q: "Muốn rủ bạn cùng đi đâu đó, ta dùng mẫu câu bắt đầu bằng:", options: ["What's", "Let's", "Is this", "This is"], answer: 1, explain: "Cấu trúc 'Let's + động từ' dùng để rủ ai cùng làm gì." },
+                    { q: "Phòng học máy tính tiếng Anh là gì?", options: ["art room", "music room", "computer room", "classroom"], answer: 2, explain: "'Computer room' là phòng máy tính." }
+                ]
+            },
+            7: {
+                title: "Unit 7: Classroom Instructions",
+                vocabulary: [
+                    { word: "Sit down", ipa: "/sɪt daʊn/", meaning: "Ngồi xuống", example: { en: "Sit down, please.", vi: "Xin mời ngồi xuống." } },
+                    { word: "Stand up", ipa: "/stænd ʌp/", meaning: "Đứng lên", example: { en: "Stand up, class.", vi: "Cả lớp đứng lên." } },
+                    { word: "Open your book", ipa: "/ˈəʊpən jɔːr bʊk/", meaning: "Mở sách", example: { en: "Open your book, please.", vi: "Xin vui lòng mở sách ra." } },
+                    { word: "Close your book", ipa: "/kləʊz jɔːr bʊk/", meaning: "Đóng sách", example: { en: "Close your books.", vi: "Gấp sách lại các em nhé." } },
+                    { word: "Come in", ipa: "/kʌm ɪn/", meaning: "Đi vào", example: { en: "May I come in?", vi: "Em xin phép vào lớp ạ?" } }
+                ],
+                grammar: [
+                    { title: "1. Mệnh lệnh lịch sự", desc: "<b>[V] + ..., please!</b>", example: "Sit down, please!" },
+                    { title: "2. Xin phép", desc: "<b>May I + [V] + ...?</b><br>-> <b>Yes, you can.</b>", example: "May I come in? - Yes, you can." }
+                ],
+                fillTest: [
+                    { q: "S_t down, please!", answer: "i", explain: "Động từ 'sit' (ngồi) thiếu chữ 'i'." },
+                    { q: "May I come i_?", answer: "n", explain: "Cụm từ 'come in' (đi vào) thiếu chữ 'n'." },
+                    { q: "Stand u_, please!", answer: "p", explain: "Cụm từ 'stand up' (đứng lên) thiếu chữ 'p'." }
+                ],
+                mcqTest: [
+                    { q: "'Stand up' có nghĩa là gì?", options: ["Ngồi xuống", "Đứng lên", "Mở sách", "Đóng sách"], answer: 1, explain: "'Stand up' là đứng lên, 'sit down' là ngồi xuống." },
+                    { q: "Khi muốn xin phép vào lớp, ta nói:", options: ["May I come in?", "May I go out?", "Sit down, please", "Open your book"], answer: 0, explain: "'May I come in?' có nghĩa là 'Em xin phép vào lớp ạ?'." },
+                    { q: "'Close your book' nghĩa là gì?", options: ["Mở sách ra", "Gấp sách lại", "Cất bút đi", "Đứng lên"], answer: 1, explain: "'Close' là đóng/gấp lại." }
+                ]
+            },
+            8: {
+                title: "Unit 8: My School Things",
+                vocabulary: [
+                    { word: "pen", ipa: "/pen/", meaning: "bút mực", example: { en: "I have a blue pen.", vi: "Tôi có một cây bút mực xanh." } },
+                    { word: "pencil", ipa: "/ˈpensl/", meaning: "bút chì", example: { en: "This is my pencil.", vi: "Đây là cây bút chì của tôi." } },
+                    { word: "school bag", ipa: "/ˈskuːl bæɡ/", meaning: "cặp sách", example: { en: "My school bag is new.", vi: "Cặp sách của tôi còn mới." } },
+                    { word: "notebook", ipa: "/ˈnəʊtbʊk/", meaning: "vở", example: { en: "Write it in your notebook.", vi: "Hãy viết nó vào vở của bạn." } },
+                    { word: "rubber", ipa: "/ˈrʌbə(r)/", meaning: "cục tẩy", example: { en: "I need a rubber.", vi: "Tôi cần một cục tẩy." } },
+                    { word: "ruler", ipa: "/ˈruːlə(r)/", meaning: "thước kẻ", example: { en: "A long ruler.", vi: "Một cây thước dài." } }
+                ],
+                grammar: [
+                    { title: "1. Sở hữu đồ vật", desc: "<b>S + have/has + [đồ vật]</b>", example: "I have a school bag." }
+                ],
+                fillTest: [
+                    { q: "I have a blue p_n.", answer: "e", explain: "Từ 'pen' (bút) thiếu chữ 'e'." },
+                    { q: "Do you h___ a rubber?", answer: "ave", explain: "Động từ 'have' (có) thiếu ba chữ cái 'ave'." },
+                    { q: "My s____ bag is black.", answer: "chool", explain: "Từ 'school' trong 'school bag' thiếu 'chool'." }
+                ],
+                mcqTest: [
+                    { q: "'Rubber' là đồ dùng học tập nào?", options: ["Cục tẩy", "Thước kẻ", "Hộp bút", "Quyển vở"], answer: 0, explain: "'Rubber' có nghĩa là cục tẩy/gôm." },
+                    { q: "Đồ vật 'ruler' dùng để làm gì?", options: ["Viết", "Tẩy", "Kẻ lề, đo độ dài", "Đựng bút"], answer: 2, explain: "'Ruler' là thước kẻ dùng để kẻ hoặc đo chiều dài." },
+                    { q: "Chọn từ chỉ 'cặp sách':", options: ["pencil case", "school bag", "notebook", "pen"], answer: 1, explain: "'School bag' là cặp sách học sinh." }
+                ]
+            },
+            9: {
+                title: "Unit 9: Colours",
+                vocabulary: [
+                    { word: "blue", ipa: "/bluː/", meaning: "màu xanh dương", example: { en: "The sky is blue.", vi: "Bầu trời màu xanh dương." } },
+                    { word: "red", ipa: "/red/", meaning: "màu đỏ", example: { en: "It's a red apple.", vi: "Đó là một quả táo đỏ." } },
+                    { word: "green", ipa: "/ɡriːn/", meaning: "màu xanh lá", example: { en: "Grass is green.", vi: "Cỏ màu xanh lá." } },
+                    { word: "yellow", ipa: "/ˈjeləʊ/", meaning: "màu vàng", example: { en: "A yellow star.", vi: "Một ngôi sao màu vàng." } },
+                    { word: "black", ipa: "/blæk/", meaning: "màu đen", example: { en: "His hair is black.", vi: "Tóc của cậu ấy màu đen." } }
+                ],
+                grammar: [
+                    { title: "1. Hỏi màu sắc", desc: "<b>What colour is it?</b><br>-> <b>It's + [màu].</b>", example: "What colour is it? - It's blue." }
+                ],
+                fillTest: [
+                    { q: "What colour i_ it? - It's red.", answer: "s", explain: "Động từ 'is' thiếu chữ 's'." },
+                    { q: "My pencil is b_ue.", answer: "l", explain: "Màu 'blue' (xanh dương) thiếu chữ 'l'." },
+                    { q: "What colour are t_ey?", answer: "h", explain: "Đại từ số nhiều 'they' thiếu chữ 'h'." }
+                ],
+                mcqTest: [
+                    { q: "'Red' là màu gì?", options: ["Màu xanh", "Màu đỏ", "Màu vàng", "Màu đen"], answer: 1, explain: "'Red' là màu đỏ." },
+                    { q: "Hỏi màu sắc của một vật dùng câu nào?", options: ["What's your name?", "What colour is it?", "How old are you?", "What is this?"], answer: 1, explain: "Cấu trúc 'What colour is it?' dùng để hỏi màu sắc." },
+                    { q: "'Yellow' có nghĩa là:", options: ["Màu trắng", "Màu cam", "Màu vàng", "Màu nâu"], answer: 2, explain: "'Yellow' là màu vàng." }
+                ]
+            },
+            10: {
+                title: "Unit 10: Break Time Activities",
+                vocabulary: [
+                    { word: "break time", ipa: "/breɪk taɪm/", meaning: "giờ ra chơi", example: { en: "What do you do at break time?", vi: "Bạn làm gì vào giờ ra chơi?" } },
+                    { word: "play football", ipa: "/pleɪ ˈfʊtbɔːl/", meaning: "đá bóng", example: { en: "They play football.", vi: "Họ đá bóng." } },
+                    { word: "play badminton", ipa: "/pleɪ ˈbædmɪntən/", meaning: "đánh cầu lông", example: { en: "We play badminton.", vi: "Chúng tôi đánh cầu lông." } },
+                    { word: "play hide-and-seek", ipa: "/pleɪ haɪd ən siːk/", meaning: "trốn tìm", example: { en: "Children love to play hide-and-seek.", vi: "Trẻ em thích chơi trốn tìm." } },
+                    { word: "chat", ipa: "/tʃæt/", meaning: "trò chuyện", example: { en: "They chat with friends.", vi: "Họ trò chuyện với bạn bè." } }
+                ],
+                grammar: [
+                    { title: "1. Hoạt động giờ ra chơi", desc: "<b>What do you do at break time?</b><br>-> <b>I play + [môn].</b>", example: "I play badminton at break time." }
+                ],
+                fillTest: [
+                    { q: "I play badminton at b____ time.", answer: "reak", explain: "Cụm từ 'break time' (giờ ra chơi) thiếu bốn chữ 'reak'." },
+                    { q: "What do you do at break t_me?", answer: "i", explain: "Từ 'time' thiếu chữ 'i'." },
+                    { q: "Bill likes playing f_otball.", answer: "o", explain: "Môn thể thao 'football' (bóng đá) thiếu chữ 'o'." }
+                ],
+                mcqTest: [
+                    { q: "'Break time' nghĩa tiếng Việt là gì?", options: ["Giờ học", "Giờ ra chơi", "Giờ thể dục", "Giờ ăn trưa"], answer: 1, explain: "'Break time' là thời gian nghỉ giải lao giữa các tiết học." },
+                    { q: "'Play hide-and-seek' là trò chơi gì?", options: ["Bóng đá", "Cầu lông", "Trốn tìm", "Bóng rổ"], answer: 2, explain: "'Hide-and-seek' là trò trốn tìm." },
+                    { q: "Hỏi bạn làm gì vào giờ ra chơi dùng câu nào?", options: ["What do you do at break time?", "What's your hobby?", "What colour is it?", "How are you?"], answer: 0, explain: "Câu hỏi chính xác là 'What do you do at break time?'." }
+                ]
+            }
+        };
+
+        function renderHome() {
+            const grid = document.getElementById('units-container');
+            grid.innerHTML = '';
+            for (let i = 1; i <= 10; i++) {
+                grid.innerHTML += `
+                    <div class="unit-card" onclick="openUnit(${i})">
+                        <h3>Unit ${i}</h3>
+                        <p>${courseData[i].title.split(': ')[1]}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function openUnit(id) {
+            document.getElementById('home-screen').style.display = 'none';
+            document.getElementById('unit-screen').style.display = 'block';
+            window.scrollTo(0, 0);
+
+            const unit = courseData[id];
+            let contentArea = document.getElementById('unit-content-area');
+
+            let html = `
+                <h2 style="color: var(--primary); margin-bottom: 20px; font-size: 1.8rem;">📚 ${unit.title}</h2>
+                <h3 class="section-title">1. Vocabulary (Từ vựng)</h3>
+                <div class="vocab-container">
+            `;
+
+            unit.vocabulary.forEach((item) => {
+                html += `
+                    <div class="vocab-card">
+                        <div>
+                            <div class="vocab-header">
+                                <span class="vocab-word">${item.word}</span>
+                                <button class="audio-btn" onclick="speakText('${item.word}')" title="Nghe phát âm">🔊</button>
+                            </div>
+                            <div class="vocab-ipa">${item.ipa}</div>
+                            <div class="vocab-meaning">${item.meaning}</div>
+                        </div>
+                        <div class="vocab-example">
+                            <div class="example-en">💡 ${item.example.en}</div>
+                            <div class="example-vi">${item.example.vi}</div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `</div><h3 class="section-title">2. Grammar & Structures (Ngữ pháp & Mẫu câu)</h3>`;
+
+            unit.grammar.forEach(g => {
+                let exampleHtml = (g.isNote || !g.example) ? '' : `<div class="grammar-example">${g.example}</div>`;
+                let boxStyle = g.isNote ? 'border-left: 6px solid var(--accent);' : '';
+                let iconTitle = g.isNote ? `📌 ${g.title}` : `📌 ${g.title}`;
+
+                html += `
+                    <div class="grammar-box" style="${boxStyle}">
+                        <h4>${iconTitle}</h4>
+                        <div class="grammar-content">
+                            <p>${g.desc}</p>
+                            ${exampleHtml}
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `
+                <h3 class="section-title">3. Practice Test (Bài tập luyện tập có giải thích)</h3>
+                <div class="test-box">
+                    <h3>✍️ Phần A: Thử thách điền từ</h3>
+            `;
+
+            unit.fillTest.forEach((t, index) => {
+                html += `
+                    <div class="question-item">
+                        <p>Câu ${index + 1}: ${t.q}</p>
+                        <input type="text" id="fill-${id}-${index}" data-answer="${t.answer.toLowerCase()}" placeholder="Nhập đáp án của bé...">
+                        <div class="explanation-box" id="fill-explain-${id}-${index}">💡 <b>Giải thích:</b> ${t.explain}</div>
+                    </div>
+                `;
+            });
+
+            html += `<h3>🎯 Phần B: Trắc nghiệm vui</h3>`;
+
+            unit.mcqTest.forEach((m, index) => {
+                html += `
+                    <div class="question-item">
+                        <p>Câu ${index + 1}: ${m.q}</p>
+                        <div class="options-group">
+                `;
+                m.options.forEach((opt, optIdx) => {
+                    html += `
+                        <label class="option-label" id="mcq-label-${id}-${index}-${optIdx}">
+                            <input type="radio" name="mcq-${id}-${index}" value="${optIdx}">
+                            <span>${opt}</span>
+                        </label>
+                    `;
+                });
+                html += `</div>
+                    <div class="explanation-box" id="mcq-explain-${id}-${index}">💡 <b>Giải thích:</b> ${m.explain}</div>
+                </div>`;
+            });
+
+            html += `
+                    <button class="submit-test-btn" onclick="submitTest(${id})">Nộp bài kiểm tra & Xem giải thích</button>
+                    <div id="test-result-${id}" class="test-result"></div>
+                </div>
+            `;
+
+            contentArea.innerHTML = html;
+        }
+
+        function goHome() {
+            document.getElementById('unit-screen').style.display = 'none';
+            document.getElementById('home-screen').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); 
+                let utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9; 
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Trình duyệt không hỗ trợ phát âm.");
+            }
+        }
+
+        function submitTest(unitId) {
+            const unit = courseData[unitId];
+            let totalScore = 0;
+            let maxScore = unit.fillTest.length + unit.mcqTest.length;
+
+            unit.fillTest.forEach((t, i) => {
+                const input = document.getElementById(`fill-${unitId}-${i}`);
+                const explainBox = document.getElementById(`fill-explain-${unitId}-${i}`);
+                const userAnswer = input.value.trim().toLowerCase();
+                const correctAnswer = input.getAttribute('data-answer');
+
+                explainBox.style.display = "block";
+
+                if (userAnswer === correctAnswer) {
+                    totalScore++;
+                    input.style.borderColor = '#1cc88a';
+                    input.style.backgroundColor = '#e8f8f5';
+                } else {
+                    input.style.borderColor = '#e74a3b';
+                    input.style.backgroundColor = '#fdedec';
+                }
+            });
+
+            unit.mcqTest.forEach((m, i) => {
+                const selectedOption = document.querySelector(`input[name="mcq-${unitId}-${i}"]:checked`);
+                const explainBox = document.getElementById(`mcq-explain-${unitId}-${i}`);
+                
+                explainBox.style.display = "block";
+
+                m.options.forEach((_, optIdx) => {
+                    const label = document.getElementById(`mcq-label-${unitId}-${i}-${optIdx}`);
+                    label.style.borderColor = '#e3e6f0';
+                    label.style.backgroundColor = '#f8f9fc';
+                });
+
+                if (selectedOption) {
+                    const userVal = parseInt(selectedOption.value);
+                    const correctVal = m.answer;
+                    const selectedLabel = document.getElementById(`mcq-label-${unitId}-${i}-${userVal}`);
+
+                    if (userVal === correctVal) {
+                        totalScore++;
+                        selectedLabel.style.borderColor = '#1cc88a';
+                        selectedLabel.style.backgroundColor = '#e8f8f5';
+                    } else {
+                        selectedLabel.style.borderColor = '#e74a3b';
+                        selectedLabel.style.backgroundColor = '#fdedec';
+                        const correctLabel = document.getElementById(`mcq-label-${unitId}-${i}-${correctVal}`);
+                        correctLabel.style.borderColor = '#1cc88a';
+                        correctLabel.style.backgroundColor = '#e8f8f5';
+                    }
+                } else {
+                    const correctLabel = document.getElementById(`mcq-label-${unitId}-${i}-${m.answer}`);
+                    correctLabel.style.borderColor = '#1cc88a';
+                    correctLabel.style.backgroundColor = '#e8f8f5';
+                }
+            });
+
+            const resultDiv = document.getElementById(`test-result-${unitId}`);
+            if (totalScore === maxScore) {
+                resultDiv.innerHTML = `🎉 Xuất sắc! Cẩm Tiên đạt tuyệt đối ${totalScore}/${maxScore} điểm! Đã mở khóa toàn bộ giải thích chi tiết phía trên. 🌟`;
+                resultDiv.style.color = '#1cc88a';
+            } else {
+                resultDiv.innerHTML = `💪 Cẩm Tiên đạt ${totalScore}/${maxScore} điểm. Hãy đọc kỹ phần giải thích chi tiết dưới từng câu để rút kinh nghiệm nhé!`;
+                resultDiv.style.color = '#4e73df';
+            }
+        }
+
+        window.onload = renderHome;
+    </script>
+</body>
+</html>
