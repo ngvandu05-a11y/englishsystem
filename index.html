@@ -8,14 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4e73df;
-            --secondary: #1cc88a;
-            --accent: #f6c23e;
-            --danger: #e74a3b;
-            --dark: #2c3e50;
-            --light: #f8f9fc;
+            --primary: #0099CC;
+            --secondary: #20b2aa;
+            --accent: #f59e0b;
+            --danger: #ef4444;
+            --dark: #1e293b;
+            --light: #f8fafc;
             --white: #ffffff;
-            --shadow: 0 4px 15px rgba(0,0,0,0.08);
+            --shadow: 0 4px 20px rgba(102, 153, 204, 0.12);
             --radius: 16px;
         }
 
@@ -27,17 +27,17 @@
         }
 
         body {
-            background-color: #f0f3ff;
+            background-color: #f4f7fb;
             color: var(--dark);
             line-height: 1.6;
         }
 
         header {
-            background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+            background: linear-gradient(135deg, #6699CC 0%, #4a7bb0 100%);
             color: var(--white);
-            padding: 20px;
+            padding: 25px 20px;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(102, 153, 204, 0.25);
         }
 
         header h1 {
@@ -47,7 +47,7 @@
 
         header p {
             font-size: 1rem;
-            opacity: 0.9;
+            opacity: 0.95;
         }
 
         .container {
@@ -62,11 +62,12 @@
 
         .welcome-banner {
             background: var(--white);
-            padding: 20px;
+            padding: 25px;
             border-radius: var(--radius);
             text-align: center;
             margin-bottom: 25px;
             box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
         }
 
         .welcome-banner h2 {
@@ -88,13 +89,14 @@
             cursor: pointer;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
             border-bottom: 5px solid var(--primary);
         }
 
         .unit-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            background: #fdfeff;
+            box-shadow: 0 10px 25px rgba(102, 153, 204, 0.2);
+            background: #f0f6ff;
         }
 
         .unit-card h3 {
@@ -105,7 +107,7 @@
 
         .unit-card p {
             font-size: 0.95rem;
-            color: #666;
+            color: #64748b;
         }
 
         #unit-screen {
@@ -128,7 +130,7 @@
         }
 
         .back-btn:hover {
-            background: #1a252f;
+            background: #0f172a;
         }
 
         .section-title {
@@ -136,7 +138,7 @@
             color: var(--primary);
             margin: 25px 0 15px 0;
             padding-bottom: 8px;
-            border-bottom: 2px solid #e3e6f0;
+            border-bottom: 2px solid #e2e8f0;
         }
 
         .vocab-container {
@@ -150,6 +152,7 @@
             border-radius: 12px;
             padding: 15px;
             box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -180,16 +183,16 @@
             align-items: center;
             justify-content: center;
             transition: transform 0.2s, background 0.2s;
-            box-shadow: 0 2px 5px rgba(78, 115, 223, 0.4);
+            box-shadow: 0 2px 8px rgba(102, 153, 204, 0.4);
         }
 
         .audio-btn:hover {
             transform: scale(1.1);
-            background: #224abe;
+            background: #4a7bb0;
         }
 
         .vocab-ipa {
-            color: #e74a3b;
+            color: #ef4444;
             font-style: italic;
             font-weight: 600;
             font-size: 0.9rem;
@@ -204,7 +207,7 @@
 
         .vocab-example {
             font-size: 0.9rem;
-            background: #f8f9fc;
+            background: #f8fafc;
             padding: 10px;
             border-radius: 8px;
             border-left: 3px solid var(--accent);
@@ -218,7 +221,7 @@
         }
 
         .example-vi {
-            color: #666;
+            color: #64748b;
             font-style: italic;
             font-size: 0.85rem;
         }
@@ -228,6 +231,7 @@
             border-radius: var(--radius);
             padding: 20px;
             box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
             margin-bottom: 20px;
             border-left: 6px solid var(--secondary);
         }
@@ -245,11 +249,44 @@
         }
 
         .grammar-example {
-            background: #f4f6fc;
+            background: #f0fdf4;
             padding: 10px 15px;
             border-radius: 8px;
             margin-top: 10px;
             font-style: italic;
+            color: #166534;
+        }
+
+        /* --- CSS CHO BẢNG GHI NHỚ MỚI --- */
+        .memo-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .memo-table th, .memo-table td {
+            padding: 10px 15px;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .memo-table th {
+            background-color: #f0f6ff;
+            color: var(--primary);
+            font-weight: 700;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .memo-table tr:not(:last-child) td {
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .memo-table tr:hover {
+            background-color: #f8fafc;
         }
 
         .test-box {
@@ -257,6 +294,7 @@
             border-radius: var(--radius);
             padding: 25px;
             box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
             margin-top: 30px;
             margin-bottom: 40px;
         }
@@ -269,7 +307,7 @@
         .question-item {
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 1px dashed #e3e6f0;
+            border-bottom: 1px dashed #e2e8f0;
         }
 
         .question-item p {
@@ -279,7 +317,7 @@
 
         .question-item input[type="text"] {
             padding: 8px 12px;
-            border: 2px solid #d1d3e2;
+            border: 2px solid #cbd5e1;
             border-radius: 8px;
             font-size: 1rem;
             width: 100%;
@@ -299,17 +337,17 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            background: #f8f9fc;
+            background: #f8fafc;
             padding: 8px 12px;
             border-radius: 8px;
-            border: 2px solid #e3e6f0;
+            border: 2px solid #e2e8f0;
             cursor: pointer;
             transition: all 0.2s;
             font-weight: 600;
         }
 
         .option-label:hover {
-            background: #eef2ff;
+            background: #f0f6ff;
             border-color: var(--primary);
         }
 
@@ -322,11 +360,11 @@
             display: none;
             margin-top: 10px;
             padding: 10px 15px;
-            background: #fdfefe;
+            background: #f0f6ff;
             border-left: 4px solid var(--primary);
             border-radius: 0 8px 8px 0;
             font-size: 0.95rem;
-            color: #333;
+            color: #334155;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
@@ -339,13 +377,13 @@
             font-weight: 700;
             border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(28, 200, 138, 0.4);
+            box-shadow: 0 4px 12px rgba(32, 178, 170, 0.4);
             transition: background 0.2s;
             margin-top: 10px;
         }
 
         .submit-test-btn:hover {
-            background: #17a673;
+            background: #1b9e98;
         }
 
         .test-result {
@@ -356,7 +394,7 @@
 
         /* --- PHẦN CHÂN TRANG (FOOTER) MỚI, SANG TRỌNG VÀ CHUYÊN NGHIỆP --- */
         footer {
-            background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             color: var(--white);
             margin-top: 50px;
             padding: 40px 20px 25px 20px;
@@ -394,7 +432,7 @@
 
         .footer-copyright {
             font-size: 0.95rem;
-            color: #cbd5e1;
+            color: #94a3b8;
             font-weight: 400;
         }
 
@@ -447,8 +485,8 @@
 
     <script>
         const courseData = {
-            1: {
-                title: "Unit 1: Hello",
+1: {
+                title: "Unit 1: <b>Hello</b><br><i>Xin chào!</i>",
                 vocabulary: [
                     { word: "Hello", ipa: "/həˈləʊ/", meaning: "Xin chào", example: { en: "Hello, Tony! I'm Nam.", vi: "Xin chào, Tony! Tớ là Nam." } },
                     { word: "Hi", ipa: "/haɪ/", meaning: "Chào", example: { en: "Hi, Mary! Nice to meet you.", vi: "Chào, Mary! Rất vui được gặp bạn." } },
@@ -457,27 +495,68 @@
                     { word: "Goodbye", ipa: "/ɡʊdˈbaɪ/", meaning: "Tạm biệt", example: { en: "Goodbye, Ben.", vi: "Tạm biệt, Ben." } },
                     { word: "Bye", ipa: "/baɪ/", meaning: "Tạm biệt", example: { en: "Bye, Lucy.", vi: "Tạm biệt, Lucy." } },
                     { word: "Thank you", ipa: "/ˈθæŋk juː/", meaning: "Cảm ơn", example: { en: "Thank you very much.", vi: "Cảm ơn bạn rất nhiều." } },
-                    { word: "Name", ipa: "/neɪm/", meaning: "Tên", example: { en: "My name is Linh.", vi: "Tên của tớ là Linh." } }
+                    { word: "Name", ipa: "/neɪm/", meaning: "Tên", example: { en: "My name is Linh.", vi: "Tên của tớ là Linh." } },
+		  { word: "Meet", ipa: "/miːt/", meaning: "Gặp", example: { en: "Nice to meet you.", vi: "Rất vui khi được gặp bạn." } },
+		{ word: "I", ipa: "/aɪ/", meaning: "Tôi / Tớ / Mình", example: { en: "I am Tien.", vi: "Tôi tên là Tiên." } },
+		{ word: "You", ipa: "/juː/ /jə/ /jʊ/", meaning: "Bạn", example: { en: "I love you", vi: "Tôi yêu bạn." } },
+		{ word: "Nice to meet you", ipa: "/naɪs tə miːt juː/", meaning: "Rất vui được gặp bạn!", example: { en: "Nice to meet you", vi: "Rất vui được gặp bạn!" } },
+{ word: "Nice to meet you, too.", ipa: "/naɪs tə miːt juː tuː/", meaning: "Tôi cũng rất vui được gặp bạn!", example: { en: "Nice to meet you, too.", vi: "Tôi cũng rất vui được gặp bạn!" } },
+{ word: "How are you?", ipa: "/haʊ ɑː(r) juː/", meaning: "Bạn khỏe không?", example: { en: "How are you?", vi: "Bạn khỏe không?" } },
+{ word: "I am fine, thank you.", ipa: "/aɪm faɪn, θæŋk juː/", meaning: "Tôi khỏe, cảm ơn bạn.", example: { en: "I'm fine, thank you.", vi: "Tôi khỏe, cảm ơn bạn." } },
+{ word: "thanks", ipa: "/θæŋks/", meaning: "Cảm ơn.", example: { en: "Thanks!", vi: "Cảm ơn!" } },
+{ word: "I’m", ipa: "/aɪm/", meaning: "Tôi là / Tôi đang <i>(dạng rút gọn của I am).</i>", example: { en: "I'm fine.", vi: "Tôi khỏe." } }
                 ],
                 grammar: [
-                    { title: "1. Chào hỏi", desc: "<b>Hello:</b> Dùng mọi tình huống.<br><b>Hi:</b> Dùng thân mật.", example: "Hello, Bill. / Hi, Lucy." },
-                    { title: "2. Giới thiệu tên", desc: "<b>I am / I'm + [Tên]</b>", example: "I am Tien." },
-                    { title: "3. Sức khỏe", desc: "<b>How are you? - I'm fine, thank you.</b>", example: "How are you? - I'm fine." },
-                    { title: "Ghi nhớ", desc: "<b>Thank you = Thanks = Cảm ơn!" }
+                    { title: "1. Chào hỏi", desc: "<b>Hello:</b> Dùng mọi tình huống.<br><b>Hi:</b> Dùng thân mật.", example: "Hello, Bill. / Hi, Lucy.<br><i>Xin chào, Bill. / Chào, Lucy.</i>" },
+                    { title: "2. Giới thiệu tên", desc: "<b>I am / I'm + [Tên]</b>", example: "I am Tien.<br><i>Tôi tên là Tiên</i>" },
+                    { title: "3. Sức khỏe", desc: "<b>How are you?<br>→ I'm fine, thank you.</b>", example: "How are you? - I'm fine, thank you.<br><i>Bạn có khỏe không? - Tôi khỏe, cảm ơn bạn nhé!</i>" },
+{ title: "4. Câu bổ trợ", desc: "<b><b>Nice to meet you.</b><br><i>Rất vui khi được gặp bạn!</i><br>→ <b>Nice to meet you, too!</b><br><i>Mình cũng rất vui khi được gặp bạn!</i>" },
+                    { 
+                        title: "Ghi nhớ", 
+                        isTable: true, 
+                        desc: `
+                            <table class="memo-table">
+                                <thead>
+                                    <tr>
+                                        <th>Đầy đủ</th>
+                                        <th>Viết tắt, cách viết khác</th>
+                                        <th>Nghĩa</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Thank you</td>
+                                        <td>Thanks</td>
+                                        <td>Cảm ơn!</td>
+                                    </tr>
+                                    <tr>
+                                        <td>I am</td>
+                                        <td>I'm</td>
+                                        <td>Tôi là...</td>
+                                    </tr>
+<tr>
+<td>Hello</td>
+<td>Hi</td>
+<td>Xin chào / Chào</td>
+</tr>
+                                </tbody>
+                            </table>
+                        ` 
+                    }
                 ],
                 fillTest: [
-                    { q: "Điền từ thích hợp: H_llo, Tony!", answer: "e", explain: "Từ đúng là 'Hello' (Xin chào), chữ cái còn thiếu là 'e'." },
-                    { q: "Điền từ hoàn thành mẫu câu: My n___e is Linh.", answer: "am", explain: "Cấu trúc giới thiệu tên là 'My name is...' nên chỗ trống điền 'am' để hoàn thành từ 'name'." },
-                    { q: "Điền từ vào chỗ trống: I'm fine, th___k you.", answer: "an", explain: "Cụm từ cảm ơn là 'thank you', thiếu hai chữ cái 'an'." }
+                    { q: "Điền từ thích hợp: H_llo, Tony!", answer: "e", explain: "Từ đúng là <b>'Hello' (Xin chào)</b>, chữ cái còn thiếu là 'e'." },
+                    { q: "Điền từ hoàn thành mẫu câu: My n___e is Linh.", answer: "am", explain: "Cấu trúc giới thiệu tên là <b>'My name is...'</b> nên chỗ trống điền 'am' để hoàn thành từ 'name'." },
+                    { q: "Điền từ vào chỗ trống: I'm fine, th___k you.", answer: "an", explain: "Cụm từ cảm ơn là <b>'thank you'</b>, thiếu hai chữ cái 'an'." }
                 ],
                 mcqTest: [
-                    { q: "Chọn câu chào tương đương với 'Hello' nhưng thân mật hơn:", options: ["Hi", "Goodbye", "Fine", "Thanks"], answer: 0, explain: "Đáp án đúng là 'Hi'. Cả 'Hi' và 'Hello' đều dùng để chào, nhưng 'Hi' thân mật hơn." },
-                    { q: "Hỏi thăm sức khỏe tiếng Anh dùng câu nào?", options: ["What is your name?", "How are you?", "How old are you?", "What this?"], answer: 1, explain: "Đáp án đúng là 'How are you?' (Bạn có khỏe không?)." },
-                    { q: "Chọn từ có nghĩa là 'Tạm biệt':", options: ["Hello", "Fine", "Goodbye", "Name"], answer: 2, explain: "Đáp án đúng là 'Goodbye' (Tạm biệt)." }
+                    { q: "Chọn câu chào tương đương với 'Hello' nhưng thân mật hơn:", options: ["Hi", "Goodbye", "Fine", "Thanks"], answer: 0, explain: "Đáp án đúng là 'Hi'. Cả 'Hi' và 'Hello' đều dùng để chào, nhưng 'Hi' thân mật hơn.<br>'Goodbye' nghĩa là 'Tạm biệt'<br>'Fine' nghĩa là 'Khỏe'<br>'Thanks' nghĩa là 'Cảm ơn'" },
+                    { q: "Hỏi thăm sức khỏe tiếng Anh dùng câu nào?", options: ["What is your name?", "How are you?", "How old are you?", "What is this?"], answer: 1, explain: "Đáp án đúng là 'How are you?' (Bạn có khỏe không?).<br>What is your name? - Tên của bạn là gì?<br>How old are you? - Bạn bao nhiêu tuổi?<br>What is this? - Đây là cái gì vậy?" },
+                    { q: "Chọn từ có nghĩa là 'Tạm biệt':", options: ["Hello", "Fine", "Goodbye", "Name"], answer: 2, explain: "Đáp án đúng là 'Goodbye' (Tạm biệt).<br>Hello - Xin chào.<br>Fine - Khỏe.<br>Name - Tên." }
                 ]
             },
             2: {
-                title: "Unit 2: Our Names",
+                title: "Unit 2: <b>Our Names</b><br><i>Tên của chúng ta</i>",
                 vocabulary: [
                     { word: "Name", ipa: "/neɪm/", meaning: "Tên", example: { en: "My name is Ben.", vi: "Tên tôi là Ben." } },
                     { word: "What", ipa: "/wɒt/", meaning: "Cái gì", example: { en: "What is this?", vi: "Đây là cái gì?" } },
@@ -486,11 +565,20 @@
                     { word: "Nine", ipa: "/naɪn/", meaning: "Số 9", example: { en: "Nine years old.", vi: "Chín tuổi." } },
                     { word: "Ten", ipa: "/ten/", meaning: "Số 10", example: { en: "Ten years old.", vi: "Mười tuổi." } },
                     { word: "Pen", ipa: "/pen/", meaning: "Bút mực", example: { en: "This is a pen.", vi: "Đây là một cây bút mực." } },
-                    { word: "Pencil", ipa: "/ˈpen.səl/", meaning: "Bút chì", example: { en: "A sharp pencil.", vi: "Một cây bút chì nhọn." } }
+                    { word: "Pencil", ipa: "/ˈpen.səl/", meaning: "Bút chì", example: { en: "A sharp pencil.", vi: "Một cây bút chì nhọn." } },
+{ word: "What is your name?", ipa: "/wɒt ɪz jɔː(r) neɪm/", meaning: "Tên của bạn là gì?", example: { en: "What is your name?", vi: "Tên của bạn là gì?" } },
+{ word: "What’s your name?", ipa: "/wɒts jɔː(r) neɪm/", meaning: "Tên của bạn là gì?", example: { en: "What’s your name?", vi: "Tên của bạn là gì?" } },
+{ word: "My name is Tien.", ipa: "/maɪ neɪm ɪz tiːn/", meaning: "Tên tôi là Tiên.", example: { en: "My name is Tien.", vi: "Tên tôi là Tiên." } },
+{ word: "My name’s Tien.", ipa: "/maɪ neɪmz tiːn/", meaning: "Tên tôi là Tiên.", example: { en: "My name's Tien.", vi: "Tên tôi là Tiên." } },
+{ word: "How old are you?", ipa: "/haʊ əʊld ɑː(r) juː/", meaning: "Bạn bao nhiêu tuổi?", example: { en: "How old are you?", vi: "Bạn bao nhiêu tuổi?" } },
+{ word: "I am eight years old.", ipa: "/aɪ æm eɪt jɪəz əʊld/", meaning: "Tôi tám tuổi.", example: { en: "I am eight years old.", vi: "Tôi tám tuổi." } },
+{ word: "I’m eight years old.", ipa: "/aɪm eɪt jɪəz əʊld/", meaning: "Tôi tám tuổi.", example: { en: "I'm eight years old.", vi: "Tôi tám tuổi." } },
+{ word: "cake", ipa: "/keɪk/", meaning: "Bánh ngọt.", example: { en: "This is a cake.", vi: "Đây là một chiếc bánh." } },
+{ word: "birthday", ipa: "/ˈbɜːθ.deɪ/", meaning: "Sinh nhật.", example: { en: "Happy birthday!", vi: "Chúc mừng sinh nhật!" } }
                 ],
                 grammar: [
-                    { title: "1. Hỏi tên", desc: "<b>What's your name?</b><br>→ <b>My name's + [Tên]</b>", example: "What's your name? - My name's Nam." },
-                    { title: "2. Hỏi tuổi", desc: "<b>How old are you?</b><br>→ <b>I'm + [Số tuổi].</b>", example: "How old are you? - I'm eight." }
+                    { title: "1. Hỏi tên", desc: "<b>What's your name?</b><br>→ <b>My name's + [Tên]</b>", example: "What's your name? - My name's Tien.<br><i>Tên của bạn là gì? - Tôi tên là Tiên</i>" },
+                    { title: "2. Hỏi tuổi", desc: "<b>How old are you?</b><br>→ <b>I'm + [Số tuổi].</b><br><b>→ I'm + [Số tuổi] + years old.</b>", example: "How old are you? - I'm eight. / I'm eight years old.<br><i>Bạn bao nhiêu tuổi? - Tôi 8 tuổi.</i>" }
                 ],
                 fillTest: [
                     { q: "What's ____ name? - My name's Tien.", answer: "your", explain: "Hỏi tên của bạn dùng tính từ sở hữu 'your'." },
@@ -504,19 +592,77 @@
                 ]
             },
             3: {
-                title: "Unit 3: Our Friends",
+                title: "Unit 3: <b>Our Friends</b> <br><i>Những người bạn của chúng ta</i>",
                 vocabulary: [
-                    { word: "Mr.", ipa: "/ˈmɪstə(r)/", meaning: "Ông", example: { en: "This is Mr. Long.", vi: "Đây là thầy/ông Long." } },
-                    { word: "Ms.", ipa: "/mɪz/", meaning: "Bà, cô", example: { en: "Ms. Hien is our teacher.", vi: "Cô Hiền là giáo viên của chúng tôi." } },
+                    { word: "Mister - Mr", ipa: "/ˈmɪstə(r)/", meaning: "Ông", example: { en: "This is Mr. Long.", vi: "Đây là thầy/ông Long." } },
+                    { word: "Miss - Ms", ipa: "/mɪz/", meaning: "Bà, cô", example: { en: "Ms. Hien is our teacher.", vi: "Cô Hiền là giáo viên của chúng tôi." } },
                     { word: "This", ipa: "/ðɪs/", meaning: "Đây", example: { en: "This is a pen.", vi: "Đây là một cây bút." } },
                     { word: "That", ipa: "/ðæt/", meaning: "Kia", example: { en: "That is my friend.", vi: "Kia là bạn của tớ." } },
+{ word: "It’s", ipa: "/ɪts/", meaning: "Nó là / Đó là <i>(dạng rút gọn của It is)</i>.", audioText: "It is", example: { en: "It's a cake.", vi: "Đó là một chiếc bánh." } },
                     { word: "Friend", ipa: "/frend/", meaning: "Bạn bè", example: { en: "He is my best friend.", vi: "Cậu ấy là bạn thân nhất của tớ." } },
-                    { word: "Teacher", ipa: "/ˈtiːtʃə(r)/", meaning: "Giáo viên", example: { en: "She is a kind teacher.", vi: "Cô ấy là một giáo viên tốt bụng." } }
+                    { word: "Teacher", ipa: "/ˈtiːtʃə(r)/", meaning: "Giáo viên", example: { en: "She is my teacher.", vi: "Cô ấy là cô giáo của tôi." } },
+{ word: "What’s", ipa: "/wɒts/", meaning: "Cái gì là / là gì (dạng rút gọn của What is).", example: { en: "What's this?", vi: "Đây là gì?" } },
+{ word: "That’s", ipa: "/ðæts/", meaning: "Đó là (dạng rút gọn của That is).", example: { en: "That's a cake.", vi: "Đó là một chiếc bánh." } },
+{ word: "friends", ipa: "/frendz/", meaning: "Những người bạn.", example: { en: "We are friends.", vi: "Chúng tôi là bạn bè." } },
+{ word: "Is that Nam?", ipa: "/ɪz ðæt næm/", meaning: "Đó có phải là Nam không?", example: { en: "Is that Nam?", vi: "Đó có phải là Nam không?" } },
+{ word: "Is this Bill?", ipa: "/ɪz ðɪs bɪl/", meaning: "Đây có phải là Bill không?", example: { en: "Is this Bill?", vi: "Đây có phải là Bill không?" } },
+{ word: "Yes, it is.", ipa: "/jes ɪt ɪz/", meaning: "Vâng, đúng vậy.", example: { en: "Yes, it is.", vi: "Vâng, đúng vậy." } },
+{ word: "No, it isn’t.", ipa: "/nəʊ ɪt ˈɪzənt/", meaning: "Không, không phải.", audioText: "No, it is not.", example: { en: "No, it isn't.", vi: "Không, không phải." } },
+{ word: "This is my friend.", ipa: "/ðɪs ɪz maɪ frend/", meaning: "Đây là bạn của tôi.", example: { en: "This is my friend.", vi: "Đây là bạn của tôi." } },
+{ word: "That’s my teacher, Mr Long.", ipa: "/ðæts maɪ ˈtiːtʃə ˈmɪstə lɒŋ/", meaning: "Đó là giáo viên của tôi, thầy Long.", example: { en: "That's my teacher, Mr Long.", vi: "Đó là giáo viên của tôi, thầy Long." } },
+{ word: "This is my teacher, Ms Hoa.", ipa: "/ðɪs ɪz maɪ ˈtiːtʃə mɪz hwɑː/", meaning: "Đây là giáo viên của tôi, cô Hoa.", example: { en: "This is my teacher, Ms Hoa.", vi: "Đây là giáo viên của tôi, cô Hoa." } }
                 ],
                 grammar: [
-                    { title: "1. Giới thiệu người", desc: "• <b>This is...</b> (Ở gần)<br>• <b>That is...</b> (Ở xa)", example: "This is Lucy. / That's Ms. Ha." },
+                    { title: "1. Giới thiệu người", desc: "• <b>This is...</b> (Ở gần)<br>• <b>That is... = That's</b> (Ở xa)", example: "This is Lucy. / That's Ms. Ha." },
                     { title: "2. Xác nhận đúng/sai", desc: "<b>Is this/that...?</b><br>→ <b>Yes, it is. / No, it isn't.</b>", example: "Is this Ben? - Yes, it is." },
-                    { title: "Ghi nhớ", desc: "Nếu đúng → Yes, it is.<br>Nếu sai → No, it isn't." }
+                    { title: "Ghi nhớ", desc: "Nếu đúng → Yes, it is.<br>Nếu sai → No, it isn't. It's + [tên]", isNote: true },
+                    { 
+                        title: "Bảng ghi nhớ viết tắt", 
+                        isTable: true, 
+                        desc: `
+                            <table class="memo-table">
+                                <thead>
+                                    <tr>
+                                        <th>Từ viết đầy đủ</th>
+                                        <th>Viết tắt, rút gọn</th>
+                                        <th>Nghĩa</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>What is</td>
+                                        <td>What's</td>
+                                        <td>Cái gì là / Là gì</td>
+                                    </tr>
+                                    <tr>
+                                        <td>It is</td>
+                                        <td>It's</td>
+                                        <td>Nó là / Đó là</td>
+                                    </tr>
+                                    <tr>
+                                        <td>That is</td>
+                                        <td>That's</td>
+                                        <td>Kia là / Đó là</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Is not</td>
+                                        <td>isn't</td>
+                                        <td>Không phải là</td>
+                                    </tr>
+<tr>
+    <td>Mister</td>
+    <td>Mr.</td>
+    <td>Ông / Thầy</td>
+</tr>
+<tr>
+    <td>Miss</td>
+    <td>Ms.</td>
+    <td>Cô</td>
+</tr>
+                                </tbody>
+                            </table>
+                        ` 
+                    }
                 ],
                 fillTest: [
                     { q: "This i_ my friend.", answer: "s", explain: "Động từ 'to be' đi với 'This' là 'is', thiếu chữ 's'." },
@@ -524,13 +670,13 @@
                     { q: "Is that Minh? - No, it i__n't.", answer: "si", explain: "Dạng phủ định của 'is' là 'isn't', thiếu 'si'." }
                 ],
                 mcqTest: [
-                    { q: "Từ nào chỉ giáo viên nam?", options: ["Ms.", "Mr.", "Teacher", "Friend"], answer: 1, explain: "'Mr.' dùng cho nam (Thầy/Ông), 'Ms.' dùng cho nữ." },
-                    { q: "Chọn cấu trúc giới thiệu người ở gần:", options: ["That is...", "This is...", "It is a...", "What is..."], answer: 1, explain: "'This is' dùng để giới thiệu người/vật ở gần." },
+                    { q: "Từ nào chỉ giáo viên nam?", options: ["Ms.", "Mr.", "Teacher", "Friend"], answer: 1, explain: "'Mr.' dùng cho nam (Thầy/Ông).,<br>Ms dùng cho nữ (Cô).<br>Teacher - giáo viên.<br>Friend - bạn bè." },
+                    { q: "Chọn cấu trúc giới thiệu người ở gần:", options: ["That is...", "This is...", "It is a...", "What is..."], answer: 1, explain: "'This is' dùng để giới thiệu người/vật ở gần.<br>That is - Đó là / Kia là <i>(Dùng cho vật / người ở xa)</i><br>It is a - Nó là một...<br>What is - Là cái gì? / Là gì? / Cái gì?" },
                     { q: "Đáp án cho câu hỏi 'Is this Ben?' khi đúng là:", options: ["No, it isn't.", "Yes, it is.", "Yes, I am.", "No, I'm not."], answer: 1, explain: "Cấu trúc hỏi 'Is this...?' trả lời khẳng định là 'Yes, it is'." }
                 ]
             },
             4: {
-                title: "Unit 4: Our Bodies",
+                title: "Unit 4: <b>Our Bodies</b><br><i>Cơ thể của chúng ta</i>",
                 vocabulary: [
                     { word: "ear", ipa: "/ɪə(r)/", meaning: "tai", example: { en: "I have two ears.", vi: "Tôi có hai cái tai." } },
                     { word: "eye", ipa: "/aɪ/", meaning: "mắt", example: { en: "Open your eyes.", vi: "Hãy mở mắt ra." } },
@@ -540,12 +686,79 @@
                     { word: "mouth", ipa: "/maʊθ/", meaning: "miệng", example: { en: "Open your mouth.", vi: "Mở miệng ra." } },
                     { word: "touch", ipa: "/tʌtʃ/", meaning: "chạm vào", example: { en: "Touch your mouth.", vi: "Chạm vào miệng của bạn."} },
                     { word: "open", ipa: "/ˈoʊ.pən/", meaning: "mở / mở ra", example: { en: "Open your book.", vi: "Mở sách của bạn."} },
-                    { word: "part", ipa: "/pɑːrt/", meaning: "phần, bộ phận", example: { en: "Parts of the body.", vi: "Các bộ phận trên cơ thể." }}
+                    { word: "part", ipa: "/pɑːrt/", meaning: "phần, bộ phận", example: { en: "Parts of the body.", vi: "Các bộ phận trên cơ thể." }},
+{ word: "Open your...", ipa: "/ˈəʊpən jɔː(r)/", meaning: "Mở ... của bạn.", example: { en: "Open your book.", vi: "Mở sách của bạn." } },
+
+{ word: "Touch your...", ipa: "/tʌtʃ jɔː(r)/", meaning: "Chạm vào ... của bạn.", example: { en: "Touch your nose.", vi: "Chạm vào mũi của bạn." } },
+
+{ word: "What’s this?", ipa: "/wɒts ðɪs/", meaning: "Đây là gì?", audioText: "What is this?", example: { en: "What's this?", vi: "Đây là gì?" } },
+
+{ word: "What’s that?", ipa: "/wɒts ðæt/", meaning: "Kia là gì?", audioText: "What is that?", example: { en: "What's that?", vi: "Kia là gì?" } }
                 ],
                 grammar: [
                     { title: "1. Hỏi bộ phận", desc: "<b>What's this/that?</b><br>→ <b>It's a/an [bộ phận].</b>", example: "What's this? - It's an ear." },
                     { title: "2. Mệnh lệnh", desc: "<b>Touch your [bộ phận]!</b>", example: "Touch your face!" },
-                    { title: "3. Mệnh lệnh", desc: "<b>Open your [bộ phận]!</b>", example: "Open your mouth!" }
+                    { title: "3. Mệnh lệnh", desc: "<b>Open your [bộ phận]!</b>", example: "Open your mouth!" },
+                    { 
+                        title: "Bảng ghi nhớ từ vựng cơ thể", 
+                        isTable: true, 
+                        desc: `
+                            <table class="memo-table">
+                                <thead>
+                                    <tr>
+                                        <th>Tên bộ phận</th>
+                                        <th>Emoji</th>
+                                        <th>Nghĩa</th>
+                                        <th>Số nhiều, số ít</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Ear</td>
+                                        <td>👂</td>
+                                        <td>tai</td>
+                                        <td>an ear, ears</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Eye</td>
+                                        <td>👁️</td>
+                                        <td>mắt</td>
+                                        <td>an eye, eyes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Face</td>
+                                        <td>😀</td>
+                                        <td>mặt</td>
+                                        <td>a face, faces</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hair</td>
+                                        <td>💇</td>
+                                        <td>tóc</td>
+                                        <td>hair</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hand</td>
+                                        <td>✋</td>
+                                        <td>bàn tay</td>
+                                        <td>a hand, hands</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mouth</td>
+                                        <td>👄</td>
+                                        <td>miệng</td>
+                                        <td>a mouth, mouths</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nose</td>
+                                        <td>👃</td>
+                                        <td>mũi</td>
+                                        <td>a nose, noses</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        ` 
+                    }
                 ],
                 fillTest: [
                     { q: "What's this? - It's a_ ear.", answer: "n", explain: "Vì 'ear' bắt đầu bằng nguyên âm 'e' nên phải dùng mạo từ 'an'." },
@@ -559,7 +772,7 @@
                 ]
             },
             5: {
-                title: "Unit 5: My Hobbies",
+                title: "Unit 5: <b>My Hobbies</b><br><i>Những sở thích của tôi</i>",
                 vocabulary: [
                     { word: "hobby", ipa: "/ˈhɒbi/", meaning: "sở thích", example: { en: "What is your hobby?", vi: "Sở thích của bạn là gì?" } },
                     { word: "singing", ipa: "/ˈsɪŋɪŋ/", meaning: "hát", example: { en: "I like singing.", vi: "Tôi thích hát." } },
@@ -583,7 +796,7 @@
                 ]
             },
             6: {
-                title: "Unit 6: Our School",
+                title: "Unit 6: <b>Our School</b><br><i>Trường học của chúng ta</i>",
                 vocabulary: [
                     { word: "school", ipa: "/skuːl/", meaning: "trường học", example: { en: "This is my school.", vi: "Đây là trường của tôi." } },
                     { word: "classroom", ipa: "/ˈklɑːsruːm/", meaning: "phòng học", example: { en: "Our classroom is big.", vi: "Phòng học của chúng tôi rất lớn." } },
@@ -607,7 +820,7 @@
                 ]
             },
             7: {
-                title: "Unit 7: Classroom Instructions",
+                title: "Unit 7: <b>Classroom Instructions</b><br><i>Những chỉ dẫn trong lớp học</i>",
                 vocabulary: [
                     { word: "Sit down", ipa: "/sɪt daʊn/", meaning: "Ngồi xuống", example: { en: "Sit down, please.", vi: "Xin mời ngồi xuống." } },
                     { word: "Stand up", ipa: "/stænd ʌp/", meaning: "Đứng lên", example: { en: "Stand up, class.", vi: "Cả lớp đứng lên." } },
@@ -631,7 +844,7 @@
                 ]
             },
             8: {
-                title: "Unit 8: My School Things",
+                title: "Unit 8: <b>My School Things</b><br><i>Đồ dùng học tập của em</i>",
                 vocabulary: [
                     { word: "pen", ipa: "/pen/", meaning: "bút mực", example: { en: "I have a blue pen.", vi: "Tôi có một cây bút mực xanh." } },
                     { word: "pencil", ipa: "/ˈpensl/", meaning: "bút chì", example: { en: "This is my pencil.", vi: "Đây là cây bút chì của tôi." } },
@@ -655,7 +868,7 @@
                 ]
             },
             9: {
-                title: "Unit 9: Colours",
+                title: "Unit 9: <b>Colours</b><br><i>Màu sắc</i>",
                 vocabulary: [
                     { word: "blue", ipa: "/bluː/", meaning: "màu xanh dương", example: { en: "The sky is blue.", vi: "Bầu trời màu xanh dương." } },
                     { word: "red", ipa: "/red/", meaning: "màu đỏ", example: { en: "It's a red apple.", vi: "Đó là một quả táo đỏ." } },
@@ -678,7 +891,7 @@
                 ]
             },
             10: {
-                title: "Unit 10: Break Time Activities",
+                title: "Unit 10: <b>Break Time Activities</b><br><i>Những hoạt động trong giờ giải lao</i>",
                 vocabulary: [
                     { word: "break time", ipa: "/breɪk taɪm/", meaning: "giờ ra chơi", example: { en: "What do you do at break time?", vi: "Bạn làm gì vào giờ ra chơi?" } },
                     { word: "play football", ipa: "/pleɪ ˈfʊtbɔːl/", meaning: "đá bóng", example: { en: "They play football.", vi: "Họ đá bóng." } },
@@ -751,9 +964,9 @@
             html += `</div><h3 class="section-title">2. Grammar & Structures (Ngữ pháp & Mẫu câu)</h3>`;
 
             unit.grammar.forEach(g => {
-                let exampleHtml = (g.isNote || !g.example) ? '' : `<div class="grammar-example">${g.example}</div>`;
-                let boxStyle = g.isNote ? 'border-left: 6px solid var(--accent);' : '';
-                let iconTitle = g.isNote ? `📌 ${g.title}` : `📌 ${g.title}`;
+                let exampleHtml = (g.isNote || g.isTable || !g.example) ? '' : `<div class="grammar-example">${g.example}</div>`;
+                let boxStyle = (g.isNote || g.isTable) ? 'border-left: 6px solid var(--accent);' : '';
+                let iconTitle = `📌 ${g.title}`;
 
                 html += `
                     <div class="grammar-box" style="${boxStyle}">
@@ -767,7 +980,7 @@
             });
 
             html += `
-                <h3 class="section-title">3. Practice Test (Bài tập luyện tập có giải thích)</h3>
+                <h3 class="section-title">3. Practice Test (Bài tập áp dụng)</h3>
                 <div class="test-box">
                     <h3>✍️ Phần A: Thử thách điền từ</h3>
             `;
@@ -776,7 +989,7 @@
                 html += `
                     <div class="question-item">
                         <p>Câu ${index + 1}: ${t.q}</p>
-                        <input type="text" id="fill-${id}-${index}" data-answer="${t.answer.toLowerCase()}" placeholder="Nhập đáp án của bé...">
+                        <input type="text" id="fill-${id}-${index}" data-answer="${t.answer.toLowerCase()}" placeholder="Nhập đáp án...">
                         <div class="explanation-box" id="fill-explain-${id}-${index}">💡 <b>Giải thích:</b> ${t.explain}</div>
                     </div>
                 `;
@@ -845,11 +1058,11 @@
 
                 if (userAnswer === correctAnswer) {
                     totalScore++;
-                    input.style.borderColor = '#1cc88a';
-                    input.style.backgroundColor = '#e8f8f5';
+                    input.style.borderColor = '#20b2aa';
+                    input.style.backgroundColor = '#e6fffa';
                 } else {
-                    input.style.borderColor = '#e74a3b';
-                    input.style.backgroundColor = '#fdedec';
+                    input.style.borderColor = '#ef4444';
+                    input.style.backgroundColor = '#fef2f2';
                 }
             });
 
@@ -861,8 +1074,8 @@
 
                 m.options.forEach((_, optIdx) => {
                     const label = document.getElementById(`mcq-label-${unitId}-${i}-${optIdx}`);
-                    label.style.borderColor = '#e3e6f0';
-                    label.style.backgroundColor = '#f8f9fc';
+                    label.style.borderColor = '#e2e8f0';
+                    label.style.backgroundColor = '#f8fafc';
                 });
 
                 if (selectedOption) {
@@ -872,29 +1085,29 @@
 
                     if (userVal === correctVal) {
                         totalScore++;
-                        selectedLabel.style.borderColor = '#1cc88a';
-                        selectedLabel.style.backgroundColor = '#e8f8f5';
+                        selectedLabel.style.borderColor = '#20b2aa';
+                        selectedLabel.style.backgroundColor = '#e6fffa';
                     } else {
-                        selectedLabel.style.borderColor = '#e74a3b';
-                        selectedLabel.style.backgroundColor = '#fdedec';
+                        selectedLabel.style.borderColor = '#ef4444';
+                        selectedLabel.style.backgroundColor = '#fef2f2';
                         const correctLabel = document.getElementById(`mcq-label-${unitId}-${i}-${correctVal}`);
-                        correctLabel.style.borderColor = '#1cc88a';
-                        correctLabel.style.backgroundColor = '#e8f8f5';
+                        correctLabel.style.borderColor = '#20b2aa';
+                        correctLabel.style.backgroundColor = '#e6fffa';
                     }
                 } else {
                     const correctLabel = document.getElementById(`mcq-label-${unitId}-${i}-${m.answer}`);
-                    correctLabel.style.borderColor = '#1cc88a';
-                    correctLabel.style.backgroundColor = '#e8f8f5';
+                    correctLabel.style.borderColor = '#20b2aa';
+                    correctLabel.style.backgroundColor = '#e6fffa';
                 }
             });
 
             const resultDiv = document.getElementById(`test-result-${unitId}`);
             if (totalScore === maxScore) {
                 resultDiv.innerHTML = `🎉 Xuất sắc! Cẩm Tiên đạt tuyệt đối ${totalScore}/${maxScore} điểm! Đã mở khóa toàn bộ giải thích chi tiết phía trên. 🌟`;
-                resultDiv.style.color = '#1cc88a';
+                resultDiv.style.color = '#20b2aa';
             } else {
                 resultDiv.innerHTML = `💪 Cẩm Tiên đạt ${totalScore}/${maxScore} điểm. Hãy đọc kỹ phần giải thích chi tiết dưới từng câu để rút kinh nghiệm nhé!`;
-                resultDiv.style.color = '#4e73df';
+                resultDiv.style.color = '#6699CC';
             }
         }
 
